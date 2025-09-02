@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import { Plus, Search, Edit, Trash2, Package } from 'lucide-react'
 import { toast } from 'react-hot-toast'
+import { cn } from '@/lib/utils'
 
 interface Product {
   id: string

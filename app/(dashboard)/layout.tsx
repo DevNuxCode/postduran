@@ -5,7 +5,11 @@ import { DashboardLayout } from '@/components/Layout/DashboardLayout'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-export default function Stores() {
+export default function DashboardLayoutWrapper({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const { user, loading } = useAuth()
   const router = useRouter()
 
@@ -15,7 +19,7 @@ export default function Stores() {
     }
   }, [user, loading, router])
 
-  if (loading || !user) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
@@ -23,14 +27,13 @@ export default function Stores() {
     )
   }
 
+  if (!user) {
+    return null
+  }
+
   return (
     <DashboardLayout>
-      <div className="space-y-6">
-        <h1 className="text-3xl font-bold text-gray-900">Gestión de Tiendas</h1>
-        <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
-          <p className="text-gray-600">Próximamente: Gestión completa de tiendas</p>
-        </div>
-      </div>
+      {children}
     </DashboardLayout>
   )
 }

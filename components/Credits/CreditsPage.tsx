@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabase'
 import { CreditCard, Plus, Search, DollarSign, User } from 'lucide-react'
 import { format } from 'date-fns'
 import { toast } from 'react-hot-toast'
+import { cn } from '@/lib/utils'
 
 interface Customer {
   id: string
