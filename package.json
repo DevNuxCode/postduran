@@ -77,5 +77,14 @@
   },
   "overrides": {
     "date-fns": "^3.6.0"
-}
+},
+  "devDependencies": {
+    "@types/react-day-picker": "^8.6.3"
+  },
+  "resolutions": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "@types/react": "18.3.5",
+    "@types/react-dom": "18.3.5"
+  } 
 }
