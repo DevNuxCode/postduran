@@ -57,7 +57,13 @@ const ChartContainer = React.forwardRef<
       >
         <ChartStyle id={chartId} config={config} />
         <RechartsPrimitive.ResponsiveContainer>
-          {() => <>{children}</>}
+          {({ width, height }) =>
+            React.isValidElement(children) ? (
+              React.cloneElement(children as React.ReactElement, { width, height })
+            ) : (
+              <>{children}</>
+            )
+          }
         </RechartsPrimitive.ResponsiveContainer>
       </div>
     </ChartContext.Provider>
@@ -79,7 +85,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
       dangerouslySetInnerHTML={{
         __html: Object.entries(THEMES)
           .map(
-            ([theme, prefix]) => `
+            ([theme, prefix]) => ` 
 ${prefix} [data-chart=${id}] {
 ${colorConfig
   .map(([key, itemConfig]) => {
